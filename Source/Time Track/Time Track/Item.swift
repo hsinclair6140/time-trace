@@ -10,9 +10,12 @@ import SwiftData
 
 @Model
 final class Item {
-    var timestamp: Date
+    var project = ""
+    var ticket = 0
+    var start = Date()
+    var end = Date()
+    var comment = ""
     
-    init(timestamp: Date) {
-        self.timestamp = timestamp
+    init() {
     }
 }
