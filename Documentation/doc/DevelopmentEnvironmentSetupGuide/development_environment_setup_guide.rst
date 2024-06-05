@@ -2,12 +2,12 @@ Development Environment Setup Guide
 ===================================
 This section outlines the steps necessary to setup the development environment for the |Project Name| project. 
 
-Setup
------
-
-
 Dependencies
 ____________
 
+Install the following dependencies:
 
-.. |Project Name| replace:: *project_name*
+* `XCode <https://apps.apple.com/us/app/xcode/id497799835?mt=12>`_
+
+
+.. |Project Name| replace:: Time Trace
