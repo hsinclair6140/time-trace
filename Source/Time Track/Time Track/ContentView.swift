@@ -16,10 +16,8 @@ struct ContentView: View {
         NavigationSplitView {
             List {
                 ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.start, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.start, format: Date.FormatStyle(date: .numeric, time: .standard))
+                    NavigationLink(destination: EditEntryView(entryIn:item)) {
+                        Label("\(item.project)-\(String(item.ticket)):  \(String(item.duration))", systemImage: "plus")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -28,13 +26,8 @@ struct ContentView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
-//                ToolbarItem {
-//                    Button(action: addItem) {
-//                        Label("Add Item", systemImage: "plus")
-//                    }
-//                }
                 ToolbarItem {
-                    NavigationLink(destination: AddEntryView()) {
+                    NavigationLink(destination: EditEntryView(entryIn:Item())) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -42,13 +35,6 @@ struct ContentView: View {
             }
         } detail: {
             Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item()
-            modelContext.insert(newItem)
         }
     }
 

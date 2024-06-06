@@ -1,14 +1,14 @@
 //
-//  Time_TrackTests.swift
-//  Time TrackTests
+//  ItemTests.swift
+//  Time Track
 //
-//  Created by Heath Sinclair on 6/1/24.
+//  Created by Heath Sinclair on 6/5/24.
 //
 
 import XCTest
 @testable import Time_Track
 
-final class Time_TrackTests: XCTestCase {
+final class ItemTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,5 +31,26 @@ final class Time_TrackTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+    }
+    
+    func testItemDurationPos() throws {
+        let item = Time_Track.Item()
+        item.setStart(start: Date(timeIntervalSince1970: 0))
+        item.setEnd(end: Date(timeIntervalSince1970: 3600))
+        XCTAssert(item.duration == 1)
+    }
+    
+    func testItemDurationNeg() throws {
+        let item = Time_Track.Item()
+        item.setStart(start: Date(timeIntervalSince1970: 3600))
+        item.setEnd(end: Date(timeIntervalSince1970: 0))
+        XCTAssert(item.duration == -1)
+    }
+    
+    func testItemDurationZero() throws {
+        let item = Time_Track.Item()
+        item.setStart(start: Date(timeIntervalSince1970: 0))
+        item.setEnd(end: Date(timeIntervalSince1970: 0))
+        XCTAssert(item.duration == 0)
     }
 }
