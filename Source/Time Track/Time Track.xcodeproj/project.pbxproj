@@ -15,7 +15,8 @@
 		461FADC72C0B935800C570BF /* Time_TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADC62C0B935800C570BF /* Time_TrackTests.swift */; };
 		461FADD12C0B935800C570BF /* Time_TrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADD02C0B935800C570BF /* Time_TrackUITests.swift */; };
 		461FADD32C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */; };
-		461FADE22C0B961F00C570BF /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE12C0B961F00C570BF /* AddEntryView.swift */; };
+		461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE12C0B961F00C570BF /* EditEntryView.swift */; };
+		461FADE52C1060E400C570BF /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE32C1060E400C570BF /* ItemTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +48,8 @@
 		461FADCC2C0B935800C570BF /* Time TrackUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time TrackUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		461FADD02C0B935800C570BF /* Time_TrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackUITests.swift; sourceTree = "<group>"; };
 		461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		461FADE12C0B961F00C570BF /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
+		461FADE12C0B961F00C570BF /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
+		461FADE32C1060E400C570BF /* ItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,7 +105,7 @@
 				461FADB72C0B935700C570BF /* Item.swift */,
 				461FADB92C0B935800C570BF /* Assets.xcassets */,
 				461FADBB2C0B935800C570BF /* Preview Content */,
-				461FADE12C0B961F00C570BF /* AddEntryView.swift */,
+				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
 			);
 			path = "Time Track";
 			sourceTree = "<group>";
@@ -120,6 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				461FADC62C0B935800C570BF /* Time_TrackTests.swift */,
+				461FADE32C1060E400C570BF /* ItemTests.swift */,
 			);
 			path = "Time TrackTests";
 			sourceTree = "<group>";
@@ -266,7 +269,7 @@
 				461FADB62C0B935700C570BF /* ContentView.swift in Sources */,
 				461FADB82C0B935700C570BF /* Item.swift in Sources */,
 				461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */,
-				461FADE22C0B961F00C570BF /* AddEntryView.swift in Sources */,
+				461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,6 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				461FADE52C1060E400C570BF /* ItemTests.swift in Sources */,
 				461FADC72C0B935800C570BF /* Time_TrackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
