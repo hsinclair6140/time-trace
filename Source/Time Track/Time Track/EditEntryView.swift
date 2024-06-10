@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditEntryView: View {
     
-    var entry:Item = Item()
+    var entry:Entry = Entry()
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
@@ -20,7 +20,7 @@ struct EditEntryView: View {
     @State private var end: Date
     @State private var comment: String
     
-    init(entryIn:Item) {
+    init(entryIn:Entry) {
         project = entryIn.project
         ticket = String(entryIn.ticket)
         start = entryIn.start
@@ -31,18 +31,17 @@ struct EditEntryView: View {
     
     var body: some View {
         
-        
         NavigationSplitView{
             Form {
                 
                 Section(header: Text("Project")){
                     TextField("PTEAE", text: $project)
                 }
-//                .keyboardType(UIKeyboardType.default)
                 
                 Section(header: Text("Ticket")){
                     TextField("1234", text: $ticket)
                 }
+                .keyboardType(UIKeyboardType.decimalPad)
                 
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
@@ -52,22 +51,14 @@ struct EditEntryView: View {
                 Section(header: Text("Comment")){
                     TextEditor(text: $comment)
                 }
-                .onSubmit {
-                    entry.comment = comment
-                }
-//                .keyboardType(UIKeyboardType.default)
                 
             }
             Button("Save") {
-                entry.project = project
-                entry.ticket = Int(ticket) ?? 0
-                entry.setStart(start: start)
-                entry.setEnd(end: end)
-                print(entry.project)
-                print(entry.ticket)
-                print(entry.start)
-                print(entry.end)
-                print(entry.duration)
+                entry.setProject(project: project)
+                entry.setTicket(ticket: Int(ticket) ?? 0)
+                entry.setStart(date: start)
+                entry.setEnd(date: end)
+                entry.setComment(comment: comment)
                 modelContext.insert(entry)
                 self.presentationMode.wrappedValue.dismiss()
             }
@@ -81,5 +72,5 @@ struct EditEntryView: View {
 }
 
 #Preview {
-    EditEntryView(entryIn:Item())
+    EditEntryView(entryIn:Entry())
 }

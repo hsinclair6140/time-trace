@@ -29,6 +29,16 @@ final class Time_TrackUITests: XCTestCase {
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+//    func testAddEntry() throws {
+//        // UI tests must launch the application that they test.
+//        let app = XCUIApplication()
+//        app.launch()
+//        
+//        app.navigationBars.buttons["Add Item"].tap()
+//
+//        // Use XCTAssert and related functions to verify your tests produce the correct results.
+//    }
 
     func testLaunchPerformance() throws {
         if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {

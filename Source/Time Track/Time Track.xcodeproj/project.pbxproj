@@ -9,14 +9,14 @@
 /* Begin PBXBuildFile section */
 		461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB32C0B935700C570BF /* Time_TrackApp.swift */; };
 		461FADB62C0B935700C570BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB52C0B935700C570BF /* ContentView.swift */; };
-		461FADB82C0B935700C570BF /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB72C0B935700C570BF /* Item.swift */; };
+		461FADB82C0B935700C570BF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB72C0B935700C570BF /* Entry.swift */; };
 		461FADBA2C0B935800C570BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461FADB92C0B935800C570BF /* Assets.xcassets */; };
 		461FADBD2C0B935800C570BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461FADBC2C0B935800C570BF /* Preview Assets.xcassets */; };
 		461FADC72C0B935800C570BF /* Time_TrackTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADC62C0B935800C570BF /* Time_TrackTests.swift */; };
 		461FADD12C0B935800C570BF /* Time_TrackUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADD02C0B935800C570BF /* Time_TrackUITests.swift */; };
 		461FADD32C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */; };
 		461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE12C0B961F00C570BF /* EditEntryView.swift */; };
-		461FADE52C1060E400C570BF /* ItemTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE32C1060E400C570BF /* ItemTests.swift */; };
+		461FADE52C1060E400C570BF /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE32C1060E400C570BF /* EntryTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,7 @@
 		461FADB02C0B935700C570BF /* Time Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		461FADB32C0B935700C570BF /* Time_TrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackApp.swift; sourceTree = "<group>"; };
 		461FADB52C0B935700C570BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		461FADB72C0B935700C570BF /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		461FADB72C0B935700C570BF /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		461FADB92C0B935800C570BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		461FADBC2C0B935800C570BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		461FADC22C0B935800C570BF /* Time TrackTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Time TrackTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,7 +49,7 @@
 		461FADD02C0B935800C570BF /* Time_TrackUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackUITests.swift; sourceTree = "<group>"; };
 		461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		461FADE12C0B961F00C570BF /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
-		461FADE32C1060E400C570BF /* ItemTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemTests.swift; sourceTree = "<group>"; };
+		461FADE32C1060E400C570BF /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 			children = (
 				461FADB32C0B935700C570BF /* Time_TrackApp.swift */,
 				461FADB52C0B935700C570BF /* ContentView.swift */,
-				461FADB72C0B935700C570BF /* Item.swift */,
+				461FADB72C0B935700C570BF /* Entry.swift */,
 				461FADB92C0B935800C570BF /* Assets.xcassets */,
 				461FADBB2C0B935800C570BF /* Preview Content */,
 				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
@@ -122,7 +122,7 @@
 			isa = PBXGroup;
 			children = (
 				461FADC62C0B935800C570BF /* Time_TrackTests.swift */,
-				461FADE32C1060E400C570BF /* ItemTests.swift */,
+				461FADE32C1060E400C570BF /* EntryTests.swift */,
 			);
 			path = "Time TrackTests";
 			sourceTree = "<group>";
@@ -267,7 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				461FADB62C0B935700C570BF /* ContentView.swift in Sources */,
-				461FADB82C0B935700C570BF /* Item.swift in Sources */,
+				461FADB82C0B935700C570BF /* Entry.swift in Sources */,
 				461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */,
 				461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */,
 			);
@@ -277,7 +277,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				461FADE52C1060E400C570BF /* ItemTests.swift in Sources */,
+				461FADE52C1060E400C570BF /* EntryTests.swift in Sources */,
 				461FADC72C0B935800C570BF /* Time_TrackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

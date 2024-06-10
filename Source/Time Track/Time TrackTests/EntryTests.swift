@@ -8,7 +8,7 @@
 import XCTest
 @testable import Time_Track
 
-final class ItemTests: XCTestCase {
+final class EntryTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -34,23 +34,23 @@ final class ItemTests: XCTestCase {
     }
     
     func testItemDurationPos() throws {
-        let item = Time_Track.Item()
-        item.setStart(start: Date(timeIntervalSince1970: 0))
-        item.setEnd(end: Date(timeIntervalSince1970: 3600))
+        let item = Time_Track.Entry()
+        item.setStart(date: Date(timeIntervalSince1970: 0))
+        item.setEnd(date: Date(timeIntervalSince1970: 3600))
         XCTAssert(item.duration == 1)
     }
     
     func testItemDurationNeg() throws {
-        let item = Time_Track.Item()
-        item.setStart(start: Date(timeIntervalSince1970: 3600))
-        item.setEnd(end: Date(timeIntervalSince1970: 0))
+        let item = Time_Track.Entry()
+        item.setStart(date: Date(timeIntervalSince1970: 3600))
+        item.setEnd(date: Date(timeIntervalSince1970: 0))
         XCTAssert(item.duration == -1)
     }
     
     func testItemDurationZero() throws {
-        let item = Time_Track.Item()
-        item.setStart(start: Date(timeIntervalSince1970: 0))
-        item.setEnd(end: Date(timeIntervalSince1970: 0))
+        let item = Time_Track.Entry()
+        item.setStart(date: Date(timeIntervalSince1970: 0))
+        item.setEnd(date: Date(timeIntervalSince1970: 0))
         XCTAssert(item.duration == 0)
     }
 }
