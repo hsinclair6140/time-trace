@@ -10,14 +10,14 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
+    @Query private var items: [Entry]
 
     var body: some View {
         NavigationSplitView {
             List {
-                ForEach(items) { item in
-                    NavigationLink(destination: EditEntryView(entryIn:item)) {
-                        Label("\(item.project)-\(String(item.ticket)):  \(String(item.duration))", systemImage: "plus")
+                ForEach(items) { entry in
+                    NavigationLink(destination: EditEntryView(entryIn:entry)) {
+                        Label("\(entry.project)-\(String(entry.ticket)):  \(String(entry.duration))", systemImage: "plus")
                     }
                 }
                 .onDelete(perform: deleteItems)
@@ -27,7 +27,7 @@ struct ContentView: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    NavigationLink(destination: EditEntryView(entryIn:Item())) {
+                    NavigationLink(destination: EditEntryView(entryIn:Entry())) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }
@@ -49,5 +49,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+        .modelContainer(for: Entry.self, inMemory: true)
 }
