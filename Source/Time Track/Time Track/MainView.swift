@@ -12,12 +12,12 @@ struct MainView: View {
         TabView {
             ContentView()
                 .tabItem {
-                    Label("Menu", systemImage: "list.dash")
+                    Label("Job", systemImage: "play")
                 }
 
             Worklog()
                 .tabItem {
-                    Label("Order", systemImage: "square.and.pencil")
+                    Label("Worklog", systemImage: "book.fill")
                 }
         }
     }

@@ -15,14 +15,14 @@ struct EditEntryView: View {
     @Environment(\.presentationMode) var presentationMode
     
     @State private var project: String
-    @State private var ticket: String
+    @State private var ticket_num: String
     @State private var start: Date
     @State private var end: Date
     @State private var comment: String
     
     init(entryIn:Entry) {
         project = entryIn.project
-        ticket = String(entryIn.ticket)
+        ticket_num = String(entryIn.ticket_num)
         start = entryIn.start
         end = entryIn.end
         comment = entryIn.comment
@@ -39,7 +39,7 @@ struct EditEntryView: View {
                 }
                 
                 Section(header: Text("Ticket")){
-                    TextField("1234", text: $ticket)
+                    TextField("1234", text: $ticket_num)
                 }
                 .keyboardType(UIKeyboardType.decimalPad)
                 
@@ -51,11 +51,17 @@ struct EditEntryView: View {
                 Section(header: Text("Comment")){
                     TextEditor(text: $comment)
                 }
-                
             }
             Button("Save") {
+                let fm = FavoritesManager()
+                let ticket = Ticket(project: project, ticket_num: Int(ticket_num) ?? 0)
+                
+                if !(fm.contains(ticket.getTicket())){
+                    fm.add(ticket.getTicket())
+                }
+                    
                 entry.setProject(project: project)
-                entry.setTicket(ticket: Int(ticket) ?? 0)
+                entry.setTicket(ticket: Int(ticket_num) ?? 0)
                 entry.setStart(date: start)
                 entry.setEnd(date: end)
                 entry.setComment(comment: comment)
@@ -72,5 +78,5 @@ struct EditEntryView: View {
 }
 
 #Preview {
-    EditEntryView(entryIn:Entry())
+    EditEntryView(entryIn:Entry()).modelContainer(for: Entry.self, inMemory: true)
 }

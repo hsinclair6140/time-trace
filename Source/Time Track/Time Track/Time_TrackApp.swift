@@ -12,7 +12,7 @@ import SwiftData
 struct Time_TrackApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Entry.self,
+            Entry.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

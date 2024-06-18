@@ -10,8 +10,10 @@ import SwiftData
 
 @Model
 final class Entry {
+        
+    var name = ""
     var project = ""
-    var ticket = 0
+    var ticket_num = 0
     var start = Date()
     var end = Date()
     var duration = 0.0
@@ -25,7 +27,7 @@ final class Entry {
     }
     
     func setTicket(ticket:Int){
-        self.ticket = ticket
+        self.ticket_num = ticket
     }
     
     func setComment(comment:String){

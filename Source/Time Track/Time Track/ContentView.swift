@@ -10,44 +10,48 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Entry]
 
     var body: some View {
+        
+        let onTheJobEntry = Entry()
+        let _ = onTheJobEntry.setProject(project: "TEST")
         NavigationSplitView {
-            List {
-                ForEach(items) { entry in
-                    NavigationLink(destination: EditEntryView(entryIn:entry)) {
-                        Label("\(entry.project)-\(String(entry.ticket)):  \(String(entry.duration))", systemImage: "plus")
-                    }
+            GroupBox(label: Label("On the Job:", systemImage: "clock")) {
+                if onTheJobEntry.project != "" {
+                    LabeledContent("Job", value: "\(onTheJobEntry.project)-\(String(onTheJobEntry.ticket_num))")
+                    LabeledContent("Duration", value: "\(String(onTheJobEntry.duration))")
+                } else {
+                    LabeledContent("", value: "Not Clocked In")
                 }
-                .onDelete(perform: deleteItems)
             }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
+            GroupBox(label: Label("Favorites:", systemImage: "star")){
+                let fm = FavoritesManager()
+                let favorites = fm.getTickets()
+                List(favorites) { favorite in
+                    Text(favorite.ticket)
                 }
-                ToolbarItem {
-                    NavigationLink(destination: EditEntryView(entryIn:Entry())) {
-                        Label("Add Item", systemImage: "plus")
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        EditButton()
+                    }
+                    ToolbarItem {
+                        NavigationLink(destination: EditEntryView(entryIn:Entry())) {
+                            Label("Add Item", systemImage: "plus")
+                        }
                     }
                 }
-                
             }
         } detail: {
             Text("Select an item")
         }
     }
-
     private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
-            }
-        }
+        
     }
 }
 
 #Preview {
+
     ContentView()
         .modelContainer(for: Entry.self, inMemory: true)
 }
