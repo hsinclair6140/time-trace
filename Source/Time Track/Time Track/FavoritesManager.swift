@@ -35,7 +35,7 @@ class FavoritesManager {
     }
 
     func remove(_ ticket: String) {
-        var index = savedTicketData.firstIndex(of: ticket) ?? -1
+        let index = savedTicketData.firstIndex(of: ticket) ?? -1
         if (index != -1){
             savedTicketData.remove(at: index)
         }

@@ -10,7 +10,10 @@ import SwiftData
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-
+    @State private var shouldShowMenu = true
+    @State var favoritesManager = FavoritesManager()
+    var clickedFavorite = ""
+    
     var body: some View {
         
         let onTheJobEntry = Entry()
@@ -25,15 +28,15 @@ struct ContentView: View {
                 }
             }
             GroupBox(label: Label("Favorites:", systemImage: "star")){
-                let fm = FavoritesManager()
-                let favorites = fm.getTickets()
-                List(favorites) { favorite in
-                    Text(favorite.ticket)
+                
+                let favoriteTickets = favoritesManager.getTickets()
+                List(favoriteTickets) { favoriteTicket in
+                    Text(favoriteTicket.ticket).contextMenu(shouldShowMenu ? menuItems : nil)
                 }
                 .toolbar {
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        EditButton()
-                    }
+//                    ToolbarItem(placement: .navigationBarTrailing) {
+//                        EditButton()
+//                    }
                     ToolbarItem {
                         NavigationLink(destination: EditEntryView(entryIn:Entry())) {
                             Label("Add Item", systemImage: "plus")
@@ -44,11 +47,15 @@ struct ContentView: View {
         } detail: {
             Text("Select an item")
         }
-    }
-    private func deleteItems(offsets: IndexSet) {
-        
+    }	
+    private let menuItems = ContextMenu {
+        NavigationLink(destination: EditFavoritesView()) {
+                Text("Edit Favorites")
+                Image(systemName: "square.and.pencil")
+            }
     }
 }
+
 
 #Preview {
 
