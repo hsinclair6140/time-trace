@@ -9,8 +9,8 @@ import Foundation
 
 @Observable
 class FavoritesManager {
-    private var savedTicketData: [String]
-    private var tickets: [Ticket]
+    public var savedTicketData: [String]
+    public var tickets: [Ticket]
 
     private let key = "Favorites"
     
@@ -23,6 +23,7 @@ class FavoritesManager {
             savedTicketData = []
         }
         tickets = []
+        updateTicketsList()
     }
 
     func contains(_ ticket: String) -> Bool {
@@ -32,6 +33,7 @@ class FavoritesManager {
     func add(_ ticket: String) {
         savedTicketData.insert(ticket, at: 0)
         save()
+        updateTicketsList()
     }
 
     func remove(_ ticket: String) {
@@ -40,15 +42,16 @@ class FavoritesManager {
             savedTicketData.remove(at: index)
         }
         save()
+        updateTicketsList()
     }
     
-    func getTickets() -> [Ticket]{
+    func updateTicketsList(){
+        tickets.removeAll()
         for savedTicket in savedTicketData{
             let ticket = Ticket()
             ticket.setTicket(ticket: savedTicket)
             tickets.append(ticket)
         }
-        return tickets
     }
 
     func save() {

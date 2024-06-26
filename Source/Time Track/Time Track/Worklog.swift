@@ -11,7 +11,7 @@ import SwiftData
 struct Worklog: View {
     @Environment(\.modelContext) private var modelContext
     @Query private var entries: [Entry]
-    
+
     var body: some View {
         NavigationSplitView {
             List {
