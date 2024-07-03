@@ -18,8 +18,13 @@ final class Entry {
     var end = Date()
     var duration = 0.0
     var comment = ""
+    var onTheJob = false
     
     init() {
+    }
+    
+    init(onTheJob:Bool) {
+        self.onTheJob = onTheJob
     }
     
     func setProject(project:String){
@@ -44,7 +49,7 @@ final class Entry {
         self.duration = calcDuration(date1: self.start, date2: self.end)
     }
     
-    private func calcDuration(date1: Date, date2: Date) -> Double {
+    func calcDuration(date1: Date, date2: Date) -> Double {
         let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: date1, to: date2)
         let hours = Double(diffComponents.hour ?? 0)
         let min = Double(diffComponents.minute ?? 0)/60.0
@@ -52,4 +57,14 @@ final class Entry {
         return duration.rounded() / 100.0
     }
     
+    func clear() {
+        name = ""
+        project = ""
+        ticket_num = 0
+        start = Date()
+        end = Date()
+        duration = 0.0
+        comment = ""
+        onTheJob = false
+    }
 }

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct EditEntryView: View {
     var fm = FavoritesManager()
-    var entry:Entry = Entry()
+    var entry:Entry
     @State private var favoritesSelection = ""
     
     @Environment(\.modelContext) private var modelContext
@@ -20,14 +20,16 @@ struct EditEntryView: View {
     @State private var start: Date
     @State private var end: Date
     @State private var comment: String
+    @State private var onTheJob: Bool
     
     init(entryIn:Entry) {
-        project = entryIn.project
-        ticketNum = String(entryIn.ticket_num)
-        start = entryIn.start
-        end = entryIn.end
-        comment = entryIn.comment
-        entry = entryIn
+        self.project = entryIn.project
+        self.ticketNum = String(entryIn.ticket_num)
+        self.start = entryIn.start
+        self.end = entryIn.end
+        self.comment = entryIn.comment
+        self.onTheJob = entryIn.onTheJob
+        self.entry = entryIn
     }
     
     var body: some View {
@@ -64,10 +66,17 @@ struct EditEntryView: View {
                     Label("", systemImage: "trash").labelStyle(.iconOnly)
                 }
                 
-                
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
-                    DatePicker("End", selection: $end)
+                    if (!onTheJob){
+                        DatePicker("End", selection: $end)
+                    }
+                    else {
+                        Button("Clock Out") {
+                            onTheJob = false
+                            self.entry.onTheJob = false
+                        }
+                    }
                 }
                 
                 Section(header: Text("Comment")){
@@ -86,7 +95,15 @@ struct EditEntryView: View {
                 entry.setStart(date: start)
                 entry.setEnd(date: end)
                 entry.setComment(comment: comment)
-                modelContext.insert(entry)
+                
+                // Only write to perminant data if we are not using
+                // this view to clock in to a job
+                if (!onTheJob){
+                    modelContext.insert(entry)
+                    entry.clear()
+                    entry.onTheJob = true
+                }
+                
                 self.presentationMode.wrappedValue.dismiss()
             }
         }
