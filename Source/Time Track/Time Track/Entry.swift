@@ -50,11 +50,12 @@ final class Entry {
     }
     
     func calcDuration(date1: Date, date2: Date) -> Double {
-        let diffComponents = Calendar.current.dateComponents([.hour, .minute], from: date1, to: date2)
-        let hours = Double(diffComponents.hour ?? 0)
-        let min = Double(diffComponents.minute ?? 0)/60.0
-        let duration = (hours + min) * 100.0
-        return duration.rounded() / 100.0
+        var elapsed = date2.timeIntervalSince(date1)
+        elapsed = elapsed / 3600.0
+        elapsed = elapsed * 1000.0
+        elapsed = elapsed.rounded()
+        elapsed = elapsed/1000.0
+        return elapsed
     }
     
     func clear() {

@@ -27,7 +27,7 @@ struct Worklog: View {
                     EditButton()
                 }
                 ToolbarItem {
-                    NavigationLink(destination: EditEntryView(entryIn:Entry())) {
+                    NavigationLink(destination: AddEntryView()) {
                         Label("Add Item", systemImage: "plus")
                     }
                 }

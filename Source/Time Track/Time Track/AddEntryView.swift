@@ -7,26 +7,21 @@
 
 import SwiftUI
 
-struct EditEntryView: View {
+struct AddEntryView: View {
     var fm = FavoritesManager()
-    var entryIn:Entry
+    var entry = Entry()
+    @State private var favoritesSelection = ""
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var project: String
-    @State private var ticketNum: String
+    @State private var project = ""
+    @State private var ticketNum = ""
     @State private var start = Date()
-    @State private var end: Date
-    @State private var comment: String
+    @State private var end = Date()
+    @State private var comment = ""
     
-    init(entryIn:Entry) {
-        self.project = entryIn.project
-        self.ticketNum = String(entryIn.ticket_num)
-        self.start = entryIn.start
-        self.end = entryIn.end
-        self.comment = entryIn.comment
-        self.entryIn = entryIn
+    init() {
     }
     
     var body: some View {
@@ -42,7 +37,26 @@ struct EditEntryView: View {
                     TextField("1234", text: $ticketNum)
                 }
                 .keyboardType(UIKeyboardType.decimalPad)
-                                
+                
+                Picker(selection: $favoritesSelection, label: Text("Recents:")) {
+                    ForEach(fm.savedTicketData, id: \.self) { ticket in
+                        Text(ticket)
+                    }
+                }
+                .onChange(of: favoritesSelection) {
+                    var tmpProject = ""
+                    var tmpTicketNum = ""
+                    if (favoritesSelection.contains("-")){
+                        tmpProject = String(favoritesSelection.split(separator: "-")[0])
+                        tmpTicketNum = String(favoritesSelection.split(separator: "-")[1])
+                    }
+                    project = tmpProject
+                    ticketNum = tmpTicketNum
+                }
+                Button(action: deleteFavorite) {
+                    Label("", systemImage: "trash").labelStyle(.iconOnly)
+                }
+                
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
                     DatePicker("End", selection: $end)
@@ -53,24 +67,18 @@ struct EditEntryView: View {
                 }
             }
             Button("Save") {
-                
-                // Add ticket to favorites
                 let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0)
+                
                 if !(fm.contains(ticket.getTicket())){
                     fm.add(ticket.getTicket())
                 }
                     
-                // Create a new copy of the entry object to store as a backup. The original will be cleared and used in 'ContentView' again.
-                let entryToStore = Entry()
-                entryToStore.setProject(project: project)
-                entryToStore.setTicket(ticket: Int(ticketNum) ?? 0)
-                entryToStore.setStart(date: start)
-                entryToStore.setEnd(date: end)
-                entryToStore.setComment(comment: comment)
-                
-                entryIn.clear()
-                
-                modelContext.insert(entryToStore)
+                entry.setProject(project: project)
+                entry.setTicket(ticket: Int(ticketNum) ?? 0)
+                entry.setStart(date: start)
+                entry.setEnd(date: end)
+                entry.setComment(comment: comment)
+                modelContext.insert(entry)
                 
                 self.presentationMode.wrappedValue.dismiss()
             }
@@ -78,6 +86,10 @@ struct EditEntryView: View {
         detail: {
             Text("Select an item")
         }
+    }
+    
+    private func deleteFavorite(){
+        fm.remove(favoritesSelection)
     }
 }
 

@@ -10,6 +10,7 @@
 		460F195C2C16F5BC0079F185 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195B2C16F5BC0079F185 /* MainView.swift */; };
 		460F195E2C16FAF80079F185 /* Worklog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195D2C16FAF80079F185 /* Worklog.swift */; };
 		460F19642C2039140079F185 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F19632C2039140079F185 /* Ticket.swift */; };
+		4612640C2C35525100A42856 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612640B2C35525100A42856 /* AddEntryView.swift */; };
 		461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461416A02C217F9600CEABEB /* FavoritesManager.swift */; };
 		461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB32C0B935700C570BF /* Time_TrackApp.swift */; };
 		461FADB62C0B935700C570BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB52C0B935700C570BF /* ContentView.swift */; };
@@ -44,6 +45,7 @@
 		460F195B2C16F5BC0079F185 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		460F195D2C16FAF80079F185 /* Worklog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worklog.swift; sourceTree = "<group>"; };
 		460F19632C2039140079F185 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		4612640B2C35525100A42856 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		461416A02C217F9600CEABEB /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		461FADB02C0B935700C570BF /* Time Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		461FADB32C0B935700C570BF /* Time_TrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackApp.swift; sourceTree = "<group>"; };
@@ -109,15 +111,16 @@
 			isa = PBXGroup;
 			children = (
 				461FADB32C0B935700C570BF /* Time_TrackApp.swift */,
-				461FADB52C0B935700C570BF /* ContentView.swift */,
 				460F195B2C16F5BC0079F185 /* MainView.swift */,
-				460F195D2C16FAF80079F185 /* Worklog.swift */,
-				461FADB72C0B935700C570BF /* Entry.swift */,
+				461FADB52C0B935700C570BF /* ContentView.swift */,
+				4612640B2C35525100A42856 /* AddEntryView.swift */,
+				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
 				461FADB92C0B935800C570BF /* Assets.xcassets */,
 				461FADBB2C0B935800C570BF /* Preview Content */,
-				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
-				460F19632C2039140079F185 /* Ticket.swift */,
+				461FADB72C0B935700C570BF /* Entry.swift */,
 				461416A02C217F9600CEABEB /* FavoritesManager.swift */,
+				460F19632C2039140079F185 /* Ticket.swift */,
+				460F195D2C16FAF80079F185 /* Worklog.swift */,
 			);
 			path = "Time Track";
 			sourceTree = "<group>";
@@ -284,6 +287,7 @@
 				460F19642C2039140079F185 /* Ticket.swift in Sources */,
 				461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */,
 				460F195C2C16F5BC0079F185 /* MainView.swift in Sources */,
+				4612640C2C35525100A42856 /* AddEntryView.swift in Sources */,
 				461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */,
 				461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */,
 			);
