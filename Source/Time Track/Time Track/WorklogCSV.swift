@@ -1,0 +1,35 @@
+//
+//  WorklogCSVBuilder.swift
+//  Time Track
+//
+//  Created by Heath Sinclair on 7/10/24.
+//
+
+import Foundation
+
+@Observable
+class WorklogCSV : ObservableObject{
+    
+    private let header = "Project,Ticket,StartDate,StartTime,Duration,Comment\n"
+    private var entries: [Entry] = []
+    private var csv: String
+    
+    init() {
+        csv = header
+    }
+    
+    func addEntry(entry: Entry){
+        entries.append(entry)
+    }
+    
+    func clear(){
+        csv = header
+    }
+    
+    func build() -> String{
+        for entry in entries{
+            csv.append("\(entry.project),\(entry.ticket_num),\(entry.start.formatted()),\(entry.duration),\(entry.comment)\n")
+        }
+        return csv
+    }
+}

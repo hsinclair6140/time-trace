@@ -7,8 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		460671682C3E903F00FF9F3E /* WorklogCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460671672C3E903F00FF9F3E /* WorklogCSV.swift */; };
 		460F195C2C16F5BC0079F185 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195B2C16F5BC0079F185 /* MainView.swift */; };
-		460F195E2C16FAF80079F185 /* Worklog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195D2C16FAF80079F185 /* Worklog.swift */; };
+		460F195E2C16FAF80079F185 /* WorklogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195D2C16FAF80079F185 /* WorklogView.swift */; };
 		460F19642C2039140079F185 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F19632C2039140079F185 /* Ticket.swift */; };
 		4612640C2C35525100A42856 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612640B2C35525100A42856 /* AddEntryView.swift */; };
 		461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461416A02C217F9600CEABEB /* FavoritesManager.swift */; };
@@ -22,6 +23,10 @@
 		461FADD32C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */; };
 		461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE12C0B961F00C570BF /* EditEntryView.swift */; };
 		461FADE52C1060E400C570BF /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE32C1060E400C570BF /* EntryTests.swift */; };
+		4659DE172C467D330015B5CE /* DateTimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659DE162C467D330015B5CE /* DateTimeUtility.swift */; };
+		4659DE192C490A6F0015B5CE /* DateTimeUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659DE182C490A6F0015B5CE /* DateTimeUtilityTests.swift */; };
+		46A769612C451AFD0033422D /* ExportView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769602C451AFD0033422D /* ExportView.swift */; };
+		46A769672C4524430033422D /* MailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 46A769662C4524430033422D /* MailView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,8 +47,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		460671672C3E903F00FF9F3E /* WorklogCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogCSV.swift; sourceTree = "<group>"; };
 		460F195B2C16F5BC0079F185 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		460F195D2C16FAF80079F185 /* Worklog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worklog.swift; sourceTree = "<group>"; };
+		460F195D2C16FAF80079F185 /* WorklogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogView.swift; sourceTree = "<group>"; };
 		460F19632C2039140079F185 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		4612640B2C35525100A42856 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		461416A02C217F9600CEABEB /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
@@ -60,6 +66,10 @@
 		461FADD22C0B935800C570BF /* Time_TrackUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		461FADE12C0B961F00C570BF /* EditEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEntryView.swift; sourceTree = "<group>"; };
 		461FADE32C1060E400C570BF /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
+		4659DE162C467D330015B5CE /* DateTimeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtility.swift; sourceTree = "<group>"; };
+		4659DE182C490A6F0015B5CE /* DateTimeUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtilityTests.swift; sourceTree = "<group>"; };
+		46A769602C451AFD0033422D /* ExportView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportView.swift; sourceTree = "<group>"; };
+		46A769662C4524430033422D /* MailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,12 +125,16 @@
 				461FADB52C0B935700C570BF /* ContentView.swift */,
 				4612640B2C35525100A42856 /* AddEntryView.swift */,
 				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
+				46A769602C451AFD0033422D /* ExportView.swift */,
+				46A769662C4524430033422D /* MailView.swift */,
+				460F195D2C16FAF80079F185 /* WorklogView.swift */,
 				461FADB92C0B935800C570BF /* Assets.xcassets */,
 				461FADBB2C0B935800C570BF /* Preview Content */,
 				461FADB72C0B935700C570BF /* Entry.swift */,
 				461416A02C217F9600CEABEB /* FavoritesManager.swift */,
 				460F19632C2039140079F185 /* Ticket.swift */,
-				460F195D2C16FAF80079F185 /* Worklog.swift */,
+				460671672C3E903F00FF9F3E /* WorklogCSV.swift */,
+				4659DE162C467D330015B5CE /* DateTimeUtility.swift */,
 			);
 			path = "Time Track";
 			sourceTree = "<group>";
@@ -138,6 +152,7 @@
 			children = (
 				461FADC62C0B935800C570BF /* Time_TrackTests.swift */,
 				461FADE32C1060E400C570BF /* EntryTests.swift */,
+				4659DE182C490A6F0015B5CE /* DateTimeUtilityTests.swift */,
 			);
 			path = "Time TrackTests";
 			sourceTree = "<group>";
@@ -281,11 +296,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4659DE172C467D330015B5CE /* DateTimeUtility.swift in Sources */,
+				460671682C3E903F00FF9F3E /* WorklogCSV.swift in Sources */,
 				461FADB62C0B935700C570BF /* ContentView.swift in Sources */,
-				460F195E2C16FAF80079F185 /* Worklog.swift in Sources */,
+				460F195E2C16FAF80079F185 /* WorklogView.swift in Sources */,
 				461FADB82C0B935700C570BF /* Entry.swift in Sources */,
+				46A769612C451AFD0033422D /* ExportView.swift in Sources */,
 				460F19642C2039140079F185 /* Ticket.swift in Sources */,
 				461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */,
+				46A769672C4524430033422D /* MailView.swift in Sources */,
 				460F195C2C16F5BC0079F185 /* MainView.swift in Sources */,
 				4612640C2C35525100A42856 /* AddEntryView.swift in Sources */,
 				461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */,
@@ -298,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				461FADE52C1060E400C570BF /* EntryTests.swift in Sources */,
+				4659DE192C490A6F0015B5CE /* DateTimeUtilityTests.swift in Sources */,
 				461FADC72C0B935800C570BF /* Time_TrackTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -454,6 +474,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Time Track/Preview Content\"";
+				DEVELOPMENT_TEAM = T76D963V7H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -482,6 +503,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Time Track/Preview Content\"";
+				DEVELOPMENT_TEAM = T76D963V7H;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;

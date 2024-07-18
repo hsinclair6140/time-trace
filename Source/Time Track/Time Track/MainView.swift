@@ -15,7 +15,7 @@ struct MainView: View {
                     Label("Job", systemImage: "play")
                 }
 
-            Worklog()
+            WorklogView()
                 .tabItem {
                     Label("Worklog", systemImage: "book.fill")
                 }
