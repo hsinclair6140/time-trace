@@ -24,6 +24,7 @@ class WorklogCSV : ObservableObject{
     
     func clear(){
         csv = header
+        entries.removeAll()
     }
     
     func build() -> String{

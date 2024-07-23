@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var ticketNum = ""
     @State private var start = Date()
     @State private var comment = ""
+    @State private var shortDescription = ""
+    
  
     var body: some View {
  
@@ -57,6 +59,13 @@ struct ContentView: View {
                     onTheJobEntry.setTicket(ticket: Int(ticketNum) ?? 0)
                 }
                 
+                Section(header: Text("Short Description")){
+                    TextField("Short Description", text: $shortDescription)
+                }
+                .onChange(of: shortDescription){
+                    onTheJobEntry.setShortDescription(shortDescription: shortDescription)
+                }
+                
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
                 }
@@ -72,12 +81,18 @@ struct ContentView: View {
                 .onChange(of: favoritesSelection) {
                     var tmpProject = ""
                     var tmpTicketNum = ""
+                    var tmpShortDescription = ""
                     if (favoritesSelection.contains("-")){
                         tmpProject = String(favoritesSelection.split(separator: "-")[0])
                         tmpTicketNum = String(favoritesSelection.split(separator: "-")[1])
+                        if (tmpTicketNum.contains(": ")){
+                            tmpShortDescription = String(tmpTicketNum.split(separator: ": ")[1])
+                            tmpTicketNum = String(tmpTicketNum.split(separator: ": ")[0])
+                        }
                     }
                     project = tmpProject
                     ticketNum = tmpTicketNum
+                    shortDescription = tmpShortDescription
                 }
                 Button(action: deleteFavorite) {
                     Label("", systemImage: "trash").labelStyle(.iconOnly)
@@ -97,6 +112,7 @@ struct ContentView: View {
                 favoritesSelection = ""
                 project = ""
                 ticketNum = ""
+                shortDescription = ""
                 start = Date()
                 comment = ""
                 fm.updateTicketsList()

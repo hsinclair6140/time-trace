@@ -14,6 +14,7 @@ struct WorklogView: View {
     @State private var date = Date()
     @State private var totalHours = 0.0
     private let secondsInDay = 86400.0
+    @State private var entriesForDay: [Entry] = []
     @StateObject var csv = WorklogCSV()
     
     var body: some View {
@@ -24,25 +25,26 @@ struct WorklogView: View {
                      selection: $date,
                      displayedComponents: [.date]
             ).onChange(of: date, {
-                totalHours=0
+                updateList()
                 csv.clear()})
             
             Gauge(value: totalHours/8.0) {
                 Text(String(format: "Hours: %f", totalHours))
             }
             List {
-                ForEach(entries) { entry in
-                    if(DateTimeUtility.sameCalenderDay(date1: date, date2: entry.start)){
-                        NavigationLink(destination: EditEntryView(entryIn:entry)) {
-                            Label("\(entry.project)-\(String(entry.ticket_num)):  \(String(entry.duration))", systemImage: "plus")
-                        }
-                        .onAppear(perform: {
-                            totalHours+=entry.duration
-                            csv.addEntry(entry: entry)})
+                ForEach(entriesForDay) { entry in
+                    NavigationLink(destination: EditEntryView(entryIn:entry)) {
+                        Label("\(entry.project)-\(String(entry.ticket_num)): \(entry.getShortDescription()) : \(String(entry.duration))", systemImage: "clock")
                     }
+                    .onAppear(perform: {
+                        csv.addEntry(entry: entry)})
                 }
                 .onDelete(perform: deleteItems)
             }
+            .onAppear(perform: {
+                updateList()
+                csv.clear()
+                })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
@@ -53,9 +55,17 @@ struct WorklogView: View {
                     }
                 }
                 ToolbarItem {
-                    NavigationLink(destination: AddEntryView()) {
+                    NavigationLink(destination: AddEntryView(date:date)) {
                         Label("Add Item", systemImage: "plus")
+                            .onTapGesture {
+                                print("tapped Label")
+                            }
+         
                     }
+                    .onTapGesture {
+                        print("tapped NavigationLink")
+                    }
+                    
                 }
             }
         } detail: {
@@ -69,6 +79,13 @@ struct WorklogView: View {
                 modelContext.delete(entries[index])
             }
         }
+        updateList()
+    }
+    
+    private func updateList() {
+        let entriesUtility = EntriesUtility(entries: entries)
+        entriesForDay = entriesUtility.getEntriesForDay(date: date)
+        totalHours = entriesUtility.getTotalHoursForDay()
     }
     
 }

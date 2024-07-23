@@ -17,10 +17,12 @@ final class Entry {
     var start = Date()
     var end = Date()
     var duration = 0.0
-    var comment = ""
+    var comment = Data()
+    var shortDescription = Data()
     var onTheJob = false
     
     init() {
+        
     }
     
     init(onTheJob:Bool) {
@@ -36,7 +38,27 @@ final class Entry {
     }
     
     func setComment(comment:String){
-        self.comment = comment
+        let cu = CryptoUtility()
+        
+        do {
+            self.comment = try cu.encrypt(str: comment)
+        } catch {
+            print("Unable to encrypt the comment.")
+        }
+    }
+    
+    func getComment() -> String {
+        
+        var comment = ""
+        
+        do {
+            let cu = CryptoUtility()
+            comment = try cu.decrypt(data: self.comment)
+        } catch {
+            print("Unable to decrypt the comment.")
+        }
+        
+        return comment
     }
     
     func setStart(date:Date) {
@@ -47,6 +69,30 @@ final class Entry {
     func setEnd(date:Date) {
         self.end = date
         self.duration = calcDuration(date1: self.start, date2: self.end)
+    }
+    
+    func setShortDescription(shortDescription:String){
+        let cu = CryptoUtility()
+        
+        do {
+            self.shortDescription = try cu.encrypt(str: shortDescription)
+        } catch {
+            print("Unable to encrypt the shortDescription.")
+        }
+    }
+    
+    func getShortDescription() -> String {
+        
+        var shortDescription = ""
+        
+        do {
+            let cu = CryptoUtility()
+            shortDescription = try cu.decrypt(data: self.shortDescription)
+        } catch {
+            print("Unable to decrypt the shortDescription.")
+        }
+        
+        return shortDescription
     }
     
     func calcDuration(date1: Date, date2: Date) -> Double {
@@ -65,7 +111,8 @@ final class Entry {
         start = Date()
         end = Date()
         duration = 0.0
-        comment = ""
+        comment = Data()
+        shortDescription = Data()
         onTheJob = false
     }
 }

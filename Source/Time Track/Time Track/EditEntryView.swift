@@ -19,13 +19,15 @@ struct EditEntryView: View {
     @State private var start = Date()
     @State private var end: Date
     @State private var comment: String
+    @State private var shortDescription = ""
     
     init(entryIn:Entry) {
         self.project = entryIn.project
         self.ticketNum = String(entryIn.ticket_num)
         self.start = entryIn.start
         self.end = entryIn.end
-        self.comment = entryIn.comment
+        self.comment = entryIn.getComment()
+        self.shortDescription = entryIn.getShortDescription()
         self.entryIn = entryIn
     }
     
@@ -37,11 +39,18 @@ struct EditEntryView: View {
                 Section(header: Text("Project")){
                     TextField("PTEAE", text: $project)
                 }
+                .onChange(of: project){
+                    fm.setFavoriteProject(favoriteProject: project)
+                }
                 
                 Section(header: Text("Ticket")){
                     TextField("1234", text: $ticketNum)
                 }
                 .keyboardType(UIKeyboardType.decimalPad)
+                
+                Section(header: Text("Short Description")){
+                    TextField("Short Description", text: $shortDescription)
+                }
                                 
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
@@ -55,7 +64,8 @@ struct EditEntryView: View {
             Button("Save") {
                 
                 // Add ticket to favorites
-                let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0)
+                let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0, shortDescription: shortDescription)
+                
                 if !(fm.contains(ticket.getTicket())){
                     fm.add(ticket.getTicket())
                 }

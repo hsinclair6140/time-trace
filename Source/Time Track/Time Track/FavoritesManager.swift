@@ -11,14 +11,25 @@ import Foundation
 class FavoritesManager {
     public var savedTicketData: [String]
     public var tickets: [Ticket]
+    private var favoriteProject: String
 
-    private let key = "Favorites"
+    private let favTicketsKey = "Favorites"
+    private let favProjectKey = "FavoriteProject"
     
     let defaults = UserDefaults.standard
     
     init() {
-        if defaults.array(forKey: key) != nil {
-            savedTicketData = defaults.object(forKey: key) as! [String]
+        
+        // Load favorite project
+        if defaults.string(forKey: favProjectKey) != nil {
+            favoriteProject = defaults.string(forKey: favProjectKey)!
+        } else {
+            favoriteProject = "PTEAE"
+        }
+        
+        // Load favorite tickets
+        if defaults.array(forKey: favTicketsKey) != nil {
+            savedTicketData = defaults.object(forKey: favTicketsKey) as! [String]
         } else {
             savedTicketData = []
         }
@@ -55,6 +66,15 @@ class FavoritesManager {
     }
 
     func save() {
-        defaults.set(savedTicketData, forKey: key)
+        defaults.set(savedTicketData, forKey: favTicketsKey)
+    }
+    
+    func getFavoriteProject() -> String{
+        return favoriteProject
+    }
+    
+    func setFavoriteProject(favoriteProject:String) {
+        self.favoriteProject = favoriteProject
+        defaults.set(favoriteProject, forKey: favProjectKey)
     }
 }

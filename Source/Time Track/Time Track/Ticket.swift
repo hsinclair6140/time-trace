@@ -12,14 +12,16 @@ class Ticket : Identifiable{
     private var project = ""
     private var ticket_num = 0
     public var ticket = ""
+    public var shortDescription = ""
     
     init(){
         
     }
     
-    init(project:String, ticket_num:Int){
+    init(project:String, ticket_num:Int, shortDescription:String){
         self.project = project
         self.ticket_num = ticket_num
+        self.shortDescription = shortDescription
     }
     
     func setProject(project:String){
@@ -34,10 +36,14 @@ class Ticket : Identifiable{
         self.ticket = ticket
     }
     
+    func setShortDescription(shortDescription:String){
+        self.shortDescription = shortDescription
+    }
+    
     func getTicket() -> String {
         if (self.ticket != ""){
             return self.ticket
         }
-        return self.project + "-" + String(self.ticket_num)
+        return self.project + "-" + String(self.ticket_num) + ": " + self.shortDescription
     }
 }

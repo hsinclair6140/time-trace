@@ -17,26 +17,41 @@ struct AddEntryView: View {
     
     @State private var project = ""
     @State private var ticketNum = ""
-    @State private var start = Date()
-    @State private var end = Date()
+    @State private var shortDescription = ""
+    @State private var start:Date
+    @State private var end:Date
     @State private var comment = ""
     
-    init() {
+
+    
+    init(date:Date) {
+        start = date
+        end = date
     }
     
     var body: some View {
-        
+    
         NavigationSplitView{
             Form {
                 
                 Section(header: Text("Project")){
                     TextField("PTEAE", text: $project)
                 }
+                .onAppear(perform: {
+                    project = fm.getFavoriteProject()
+                })
+                .onChange(of: project){
+                    fm.setFavoriteProject(favoriteProject: project)
+                }
                 
                 Section(header: Text("Ticket")){
                     TextField("1234", text: $ticketNum)
                 }
                 .keyboardType(UIKeyboardType.decimalPad)
+                
+                Section(header: Text("Short Description")){
+                    TextField("Short Description", text: $shortDescription)
+                }
                 
                 Picker(selection: $favoritesSelection, label: Text("Recents:")) {
                     ForEach(fm.savedTicketData, id: \.self) { ticket in
@@ -46,12 +61,18 @@ struct AddEntryView: View {
                 .onChange(of: favoritesSelection) {
                     var tmpProject = ""
                     var tmpTicketNum = ""
+                    var tmpShortDescription = ""
                     if (favoritesSelection.contains("-")){
                         tmpProject = String(favoritesSelection.split(separator: "-")[0])
                         tmpTicketNum = String(favoritesSelection.split(separator: "-")[1])
+                        if (tmpTicketNum.contains(": ")){
+                            tmpShortDescription = String(tmpTicketNum.split(separator: ": ")[1])
+                            tmpTicketNum = String(tmpTicketNum.split(separator: ": ")[0])
+                        }
                     }
                     project = tmpProject
                     ticketNum = tmpTicketNum
+                    shortDescription = tmpShortDescription
                 }
                 Button(action: deleteFavorite) {
                     Label("", systemImage: "trash").labelStyle(.iconOnly)
@@ -67,7 +88,8 @@ struct AddEntryView: View {
                 }
             }
             Button("Save") {
-                let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0)
+                
+                let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0, shortDescription: shortDescription)
                 
                 if !(fm.contains(ticket.getTicket())){
                     fm.add(ticket.getTicket())
@@ -75,8 +97,9 @@ struct AddEntryView: View {
                     
                 entry.setProject(project: project)
                 entry.setTicket(ticket: Int(ticketNum) ?? 0)
-                entry.setStart(date: start)
-                entry.setEnd(date: end)
+                entry.setShortDescription(shortDescription: shortDescription)
+                entry.setStart(date: DateTimeUtility.removeSeconds(date: start))
+                entry.setEnd(date: DateTimeUtility.removeSeconds(date: end))
                 entry.setComment(comment: comment)
                 modelContext.insert(entry)
                 
@@ -91,8 +114,9 @@ struct AddEntryView: View {
     private func deleteFavorite(){
         fm.remove(favoritesSelection)
     }
+    
 }
 
 #Preview {
-    EditEntryView(entryIn:Entry()).modelContainer(for: Entry.self, inMemory: true)
+    AddEntryView(date:Date()).modelContainer(for: Entry.self, inMemory: true)
 }
