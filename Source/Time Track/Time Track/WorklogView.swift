@@ -21,7 +21,7 @@ struct WorklogView: View {
         
         NavigationSplitView {
             DatePicker(
-                    "Worklog Day: ",
+                    "",
                      selection: $date,
                      displayedComponents: [.date]
             ).onChange(of: date, {
@@ -34,7 +34,7 @@ struct WorklogView: View {
             List {
                 ForEach(entriesForDay) { entry in
                     NavigationLink(destination: EditEntryView(entryIn:entry)) {
-                        Label("\(entry.project)-\(String(entry.ticket_num)): \(entry.getShortDescription()) : \(String(entry.duration))", systemImage: "clock")
+                        WorklogEntryView(entryIn: entry)
                     }
                     .onAppear(perform: {
                         csv.addEntry(entry: entry)})
@@ -55,7 +55,7 @@ struct WorklogView: View {
                     }
                 }
                 ToolbarItem {
-                    NavigationLink(destination: AddEntryView(date:date)) {
+                    NavigationLink(destination: EditEntryView(date:date)) {
                         Label("Add Item", systemImage: "plus")
                             .onTapGesture {
                                 print("tapped Label")

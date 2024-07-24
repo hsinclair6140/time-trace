@@ -46,6 +46,15 @@ class DateTimeUtility{
         return date
     }
     
+    static func getTimeStringFromDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .none
+        dateFormatter.timeStyle = .short
+        dateFormatter.locale = Locale(identifier: "en_US")
+        dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
+        return dateFormatter.string(from: date)
+    }
+    
     static func removeSeconds(date:Date) -> Date{
         let newDateSting = getDayWithHour(date:date)
         let newDate = getDateFromString(dateString: newDateSting)

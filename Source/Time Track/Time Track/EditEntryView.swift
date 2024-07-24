@@ -9,17 +9,27 @@ import SwiftUI
 
 struct EditEntryView: View {
     var fm = FavoritesManager()
-    var entryIn:Entry
+    var entryIn = Entry()
+    @State private var favoritesSelection = ""
     
     @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
-    @State private var project: String
-    @State private var ticketNum: String
-    @State private var start = Date()
-    @State private var end: Date
-    @State private var comment: String
-    @State private var shortDescription = ""
+    @State private var project:String
+    @State private var ticketNum:String
+    @State private var start:Date
+    @State private var end:Date
+    @State private var comment:String
+    @State private var shortDescription:String
+    
+    init(date:Date) {
+        start = DateTimeUtility.removeSeconds(date: date)
+        end = DateTimeUtility.removeSeconds(date: date)
+        project = ""
+        ticketNum = ""
+        comment = ""
+        shortDescription = ""
+    }
     
     init(entryIn:Entry) {
         self.project = entryIn.project
@@ -51,6 +61,33 @@ struct EditEntryView: View {
                 Section(header: Text("Short Description")){
                     TextField("Short Description", text: $shortDescription)
                 }
+                
+                Picker(selection: $favoritesSelection, label: Text("Recents:")) {
+                    ForEach(fm.savedTicketData, id: \.self) { ticket in
+                        Text(ticket)
+                    }
+                }
+                .onChange(of: favoritesSelection) {
+                    var tmpProject = ""
+                    var tmpTicketNum = ""
+                    var tmpShortDescription = ""
+                    var splitFavSelection = favoritesSelection.split(separator: "-")
+                    if (splitFavSelection.count > 1){
+                        tmpProject = String(splitFavSelection[0])
+                        tmpTicketNum = String(splitFavSelection[1])
+                        var splitTicketNum = tmpTicketNum.split(separator: ": ")
+                        if (splitTicketNum.count > 1){
+                            tmpTicketNum = String(splitTicketNum[0])
+                            tmpShortDescription = String(splitTicketNum[1])
+                        }
+                    }
+                    project = tmpProject
+                    ticketNum = tmpTicketNum
+                    shortDescription = tmpShortDescription
+                }
+                Button(action: deleteFavorite) {
+                    Label("", systemImage: "trash").labelStyle(.iconOnly)
+                }
                                 
                 Section(header: Text("Time")){
                     DatePicker("Start", selection: $start)
@@ -70,17 +107,14 @@ struct EditEntryView: View {
                     fm.add(ticket.getTicket())
                 }
                     
-                // Create a new copy of the entry object to store as a backup. The original will be cleared and used in 'ContentView' again.
-                let entryToStore = Entry()
-                entryToStore.setProject(project: project)
-                entryToStore.setTicket(ticket: Int(ticketNum) ?? 0)
-                entryToStore.setStart(date: start)
-                entryToStore.setEnd(date: end)
-                entryToStore.setComment(comment: comment)
+                entryIn.setProject(project: project)
+                entryIn.setTicket(ticket: Int(ticketNum) ?? 0)
+                entryIn.setStart(date: start)
+                entryIn.setEnd(date: end)
+                entryIn.setShortDescription(shortDescription: shortDescription)
+                entryIn.setComment(comment: comment)
                 
-                entryIn.clear()
-                
-                modelContext.insert(entryToStore)
+                modelContext.insert(entryIn)
                 
                 self.presentationMode.wrappedValue.dismiss()
             }
@@ -88,6 +122,10 @@ struct EditEntryView: View {
         detail: {
             Text("Select an item")
         }
+    }
+    
+    private func deleteFavorite(){
+        fm.remove(favoritesSelection)
     }
 }
 

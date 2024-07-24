@@ -14,7 +14,6 @@
 		4612640C2C35525100A42856 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612640B2C35525100A42856 /* AddEntryView.swift */; };
 		461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461416A02C217F9600CEABEB /* FavoritesManager.swift */; };
 		461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB32C0B935700C570BF /* Time_TrackApp.swift */; };
-		461FADB62C0B935700C570BF /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB52C0B935700C570BF /* ContentView.swift */; };
 		461FADB82C0B935700C570BF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB72C0B935700C570BF /* Entry.swift */; };
 		461FADBA2C0B935800C570BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461FADB92C0B935800C570BF /* Assets.xcassets */; };
 		461FADBD2C0B935800C570BF /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 461FADBC2C0B935800C570BF /* Preview Assets.xcassets */; };
@@ -25,6 +24,8 @@
 		461FADE52C1060E400C570BF /* EntryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADE32C1060E400C570BF /* EntryTests.swift */; };
 		464AD1EE2C4EB157001C4F01 /* CryptoUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464AD1ED2C4EB157001C4F01 /* CryptoUtility.swift */; };
 		464AD1F02C4EB178001C4F01 /* CryptoUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464AD1EF2C4EB178001C4F01 /* CryptoUtilityTests.swift */; };
+		464AD1F22C50EFE6001C4F01 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464AD1F12C50EFE6001C4F01 /* SettingsView.swift */; };
+		464AD1F42C50F92C001C4F01 /* WorklogEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 464AD1F32C50F92C001C4F01 /* WorklogEntryView.swift */; };
 		4659DE172C467D330015B5CE /* DateTimeUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659DE162C467D330015B5CE /* DateTimeUtility.swift */; };
 		4659DE192C490A6F0015B5CE /* DateTimeUtilityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659DE182C490A6F0015B5CE /* DateTimeUtilityTests.swift */; };
 		4659DE1B2C4917750015B5CE /* EntriesUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4659DE1A2C4917750015B5CE /* EntriesUtility.swift */; };
@@ -59,7 +60,6 @@
 		461416A02C217F9600CEABEB /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		461FADB02C0B935700C570BF /* Time Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		461FADB32C0B935700C570BF /* Time_TrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackApp.swift; sourceTree = "<group>"; };
-		461FADB52C0B935700C570BF /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		461FADB72C0B935700C570BF /* Entry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Entry.swift; sourceTree = "<group>"; };
 		461FADB92C0B935800C570BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		461FADBC2C0B935800C570BF /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -72,6 +72,8 @@
 		461FADE32C1060E400C570BF /* EntryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryTests.swift; sourceTree = "<group>"; };
 		464AD1ED2C4EB157001C4F01 /* CryptoUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtility.swift; sourceTree = "<group>"; };
 		464AD1EF2C4EB178001C4F01 /* CryptoUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoUtilityTests.swift; sourceTree = "<group>"; };
+		464AD1F12C50EFE6001C4F01 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		464AD1F32C50F92C001C4F01 /* WorklogEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogEntryView.swift; sourceTree = "<group>"; };
 		4659DE162C467D330015B5CE /* DateTimeUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtility.swift; sourceTree = "<group>"; };
 		4659DE182C490A6F0015B5CE /* DateTimeUtilityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTimeUtilityTests.swift; sourceTree = "<group>"; };
 		4659DE1A2C4917750015B5CE /* EntriesUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntriesUtility.swift; sourceTree = "<group>"; };
@@ -130,11 +132,12 @@
 			children = (
 				461FADB32C0B935700C570BF /* Time_TrackApp.swift */,
 				460F195B2C16F5BC0079F185 /* MainView.swift */,
-				461FADB52C0B935700C570BF /* ContentView.swift */,
 				4612640B2C35525100A42856 /* AddEntryView.swift */,
 				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
 				46A769602C451AFD0033422D /* ExportView.swift */,
 				46A769662C4524430033422D /* MailView.swift */,
+				464AD1F12C50EFE6001C4F01 /* SettingsView.swift */,
+				464AD1F32C50F92C001C4F01 /* WorklogEntryView.swift */,
 				460F195D2C16FAF80079F185 /* WorklogView.swift */,
 				461FADB92C0B935800C570BF /* Assets.xcassets */,
 				461FADBB2C0B935800C570BF /* Preview Content */,
@@ -310,8 +313,9 @@
 			files = (
 				4659DE172C467D330015B5CE /* DateTimeUtility.swift in Sources */,
 				460671682C3E903F00FF9F3E /* WorklogCSV.swift in Sources */,
+				464AD1F22C50EFE6001C4F01 /* SettingsView.swift in Sources */,
+				464AD1F42C50F92C001C4F01 /* WorklogEntryView.swift in Sources */,
 				4659DE1B2C4917750015B5CE /* EntriesUtility.swift in Sources */,
-				461FADB62C0B935700C570BF /* ContentView.swift in Sources */,
 				460F195E2C16FAF80079F185 /* WorklogView.swift in Sources */,
 				461FADB82C0B935700C570BF /* Entry.swift in Sources */,
 				46A769612C451AFD0033422D /* ExportView.swift in Sources */,
