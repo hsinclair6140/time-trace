@@ -11,7 +11,6 @@
 		460F195C2C16F5BC0079F185 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195B2C16F5BC0079F185 /* MainView.swift */; };
 		460F195E2C16FAF80079F185 /* WorklogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F195D2C16FAF80079F185 /* WorklogView.swift */; };
 		460F19642C2039140079F185 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 460F19632C2039140079F185 /* Ticket.swift */; };
-		4612640C2C35525100A42856 /* AddEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4612640B2C35525100A42856 /* AddEntryView.swift */; };
 		461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461416A02C217F9600CEABEB /* FavoritesManager.swift */; };
 		461FADB42C0B935700C570BF /* Time_TrackApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB32C0B935700C570BF /* Time_TrackApp.swift */; };
 		461FADB82C0B935700C570BF /* Entry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 461FADB72C0B935700C570BF /* Entry.swift */; };
@@ -56,7 +55,6 @@
 		460F195B2C16F5BC0079F185 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		460F195D2C16FAF80079F185 /* WorklogView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorklogView.swift; sourceTree = "<group>"; };
 		460F19632C2039140079F185 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
-		4612640B2C35525100A42856 /* AddEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEntryView.swift; sourceTree = "<group>"; };
 		461416A02C217F9600CEABEB /* FavoritesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesManager.swift; sourceTree = "<group>"; };
 		461FADB02C0B935700C570BF /* Time Track.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Track.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		461FADB32C0B935700C570BF /* Time_TrackApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackApp.swift; sourceTree = "<group>"; };
@@ -132,7 +130,6 @@
 			children = (
 				461FADB32C0B935700C570BF /* Time_TrackApp.swift */,
 				460F195B2C16F5BC0079F185 /* MainView.swift */,
-				4612640B2C35525100A42856 /* AddEntryView.swift */,
 				461FADE12C0B961F00C570BF /* EditEntryView.swift */,
 				46A769602C451AFD0033422D /* ExportView.swift */,
 				46A769662C4524430033422D /* MailView.swift */,
@@ -324,7 +321,6 @@
 				46A769672C4524430033422D /* MailView.swift in Sources */,
 				460F195C2C16F5BC0079F185 /* MainView.swift in Sources */,
 				464AD1EE2C4EB157001C4F01 /* CryptoUtility.swift in Sources */,
-				4612640C2C35525100A42856 /* AddEntryView.swift in Sources */,
 				461FADE22C0B961F00C570BF /* EditEntryView.swift in Sources */,
 				461416A12C217F9600CEABEB /* FavoritesManager.swift in Sources */,
 			);
