@@ -32,10 +32,10 @@ struct EditEntryView: View {
     }
     
     init(entryIn:Entry) {
-        self.project = entryIn.project
-        self.ticketNum = String(entryIn.ticket_num)
-        self.start = entryIn.start
-        self.end = entryIn.end
+        self.project = entryIn.getProject()
+        self.ticketNum = String(entryIn.getTicket())
+        self.start = entryIn.getStart()
+        self.end = entryIn.getEnd()
         self.comment = entryIn.getComment()
         self.shortDescription = entryIn.getShortDescription()
         self.entryIn = entryIn

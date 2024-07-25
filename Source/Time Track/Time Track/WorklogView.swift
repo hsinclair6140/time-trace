@@ -83,9 +83,14 @@ struct WorklogView: View {
     }
     
     private func updateList() {
-        let entriesUtility = EntriesUtility(entries: entries)
-        entriesForDay = entriesUtility.getEntriesForDay(date: date)
-        totalHours = entriesUtility.getTotalHoursForDay()
+        if (entries.count > 0){
+            let entriesUtility = EntriesUtility(entries: entries)
+            entriesForDay = entriesUtility.getEntriesForDay(date: date)
+            totalHours = entriesUtility.getTotalHoursForDay()
+        }
+        else{
+            totalHours = 0
+        }
     }
     
 }

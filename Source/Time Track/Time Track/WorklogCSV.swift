@@ -29,7 +29,7 @@ class WorklogCSV : ObservableObject{
     
     func build() -> String{
         for entry in entries{
-            csv.append("\(entry.project),\(entry.ticket_num),\(entry.start.formatted()),\(entry.duration),\(entry.comment)\n")
+            csv.append("\(entry.getProject()),\(entry.getTicket()),\(entry.getStart().formatted()),\(entry.getDuration()),\(entry.getComment())\n")
         }
         return csv
     }

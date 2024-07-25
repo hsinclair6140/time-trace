@@ -18,15 +18,19 @@ struct WorklogEntryView: View {
     var body: some View {
         VStack{
             HStack{
-                Text(entry.project + "-" + String(entry.ticket_num))
+                Text(entry.getProject() + "-" + String(entry.getTicket()))
             }
             HStack{
                 Text("Start Time: ")
-                Text(DateTimeUtility.getTimeStringFromDate(date: entry.start))
+                Text(DateTimeUtility.getTimeStringFromDate(date: entry.getStart()))
+            }
+            HStack{
+                Text("End Time: ")
+                Text(DateTimeUtility.getTimeStringFromDate(date: entry.getEnd()))
             }
             HStack{
                 Text("Duration: ")
-                Text(String(entry.duration))
+                Text(String(entry.getDuration()))
             }
         }
         .frame(maxWidth: .infinity, alignment: .leading)

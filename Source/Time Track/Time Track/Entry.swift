@@ -33,8 +33,16 @@ final class Entry {
         self.project = project
     }
     
+    func getProject() -> String {
+        return self.project
+    }
+    
     func setTicket(ticket:Int){
         self.ticket_num = ticket
+    }
+    
+    func getTicket() -> String {
+        return String(self.ticket_num)
     }
     
     func setComment(comment:String){
@@ -66,9 +74,21 @@ final class Entry {
         self.duration = calcDuration(date1: self.start, date2: self.end)
     }
     
+    func getStart() -> Date {
+        return self.start
+    }
+    
     func setEnd(date:Date) {
         self.end = date
         self.duration = calcDuration(date1: self.start, date2: self.end)
+    }
+    
+    func getEnd() -> Date {
+        return self.end
+    }
+    
+    func getDuration() -> Double {
+        return self.duration
     }
     
     func setShortDescription(shortDescription:String){
