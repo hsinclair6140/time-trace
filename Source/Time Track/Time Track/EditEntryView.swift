@@ -68,22 +68,10 @@ struct EditEntryView: View {
                     }
                 }
                 .onChange(of: favoritesSelection) {
-                    var tmpProject = ""
-                    var tmpTicketNum = ""
-                    var tmpShortDescription = ""
-                    var splitFavSelection = favoritesSelection.split(separator: "-")
-                    if (splitFavSelection.count > 1){
-                        tmpProject = String(splitFavSelection[0])
-                        tmpTicketNum = String(splitFavSelection[1])
-                        var splitTicketNum = tmpTicketNum.split(separator: ": ")
-                        if (splitTicketNum.count > 1){
-                            tmpTicketNum = String(splitTicketNum[0])
-                            tmpShortDescription = String(splitTicketNum[1])
-                        }
-                    }
-                    project = tmpProject
-                    ticketNum = tmpTicketNum
-                    shortDescription = tmpShortDescription
+                    let ticket = fm.createTicketFromString(ticketDateString: favoritesSelection)
+                    project = ticket.getProject()
+                    ticketNum = String(ticket.getTicketNum())
+                    shortDescription = ticket.getShortDescription()
                 }
                 Button(action: deleteFavorite) {
                     Label("", systemImage: "trash").labelStyle(.iconOnly)
@@ -117,8 +105,8 @@ struct EditEntryView: View {
                 // Add ticket to favorites
                 let ticket = Ticket(project: project, ticket_num: Int(ticketNum) ?? 0, shortDescription: shortDescription)
                 
-                if !(fm.contains(ticket.getTicket())){
-                    fm.add(ticket.getTicket())
+                if !(fm.contains(ticket)){
+                    fm.add(ticket)
                 }
                     
                 entryIn.setProject(project: project)
@@ -139,7 +127,7 @@ struct EditEntryView: View {
     }
     
     private func deleteFavorite(){
-        fm.remove(favoritesSelection)
+        fm.remove(fm.createTicketFromString(ticketDateString: favoritesSelection))
     }
 }
 

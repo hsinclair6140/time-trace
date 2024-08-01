@@ -37,18 +37,21 @@ class FavoritesManager {
         updateTicketsList()
     }
 
-    func contains(_ ticket: String) -> Bool {
-        return savedTicketData.contains(ticket)
+    func contains(_ ticket: Ticket) -> Bool {
+        let dataString = createStringFromTicket(ticket: ticket)
+        return savedTicketData.contains(dataString)
     }
 
-    func add(_ ticket: String) {
-        savedTicketData.insert(ticket, at: 0)
+    func add(_ ticket: Ticket) {
+        let dataString = createStringFromTicket(ticket: ticket)
+        savedTicketData.insert(dataString, at: 0)
         save()
         updateTicketsList()
     }
 
-    func remove(_ ticket: String) {
-        let index = savedTicketData.firstIndex(of: ticket) ?? -1
+    func remove(_ ticket: Ticket) {
+        let dataString = createStringFromTicket(ticket: ticket)
+        let index = savedTicketData.firstIndex(of: dataString) ?? -1
         if (index != -1){
             savedTicketData.remove(at: index)
         }
@@ -58,14 +61,13 @@ class FavoritesManager {
     
     func updateTicketsList(){
         tickets.removeAll()
-        for savedTicket in savedTicketData{
-            let ticket = Ticket()
-            ticket.setTicket(ticket: savedTicket)
+        for savedTicketDataString in savedTicketData{
+            let ticket = createTicketFromString(ticketDateString: savedTicketDataString)
             tickets.append(ticket)
         }
     }
 
-    func save() {
+    private func save() {
         defaults.set(savedTicketData, forKey: favTicketsKey)
     }
     
@@ -76,5 +78,18 @@ class FavoritesManager {
     func setFavoriteProject(favoriteProject:String) {
         self.favoriteProject = favoriteProject
         defaults.set(favoriteProject, forKey: favProjectKey)
+    }
+    
+    func createStringFromTicket(ticket:Ticket) -> String{
+        return ticket.getProject()+"-"+String(ticket.getTicketNum())+":"+ticket.getShortDescription()
+    }
+    
+    func createTicketFromString(ticketDateString:String) -> Ticket{
+        let id = String(ticketDateString.split(separator: ":")[0])
+        let project = String(id.split(separator: "-")[0])
+        let number = Int(id.split(separator: "-")[1]) ?? 0
+        let summary = String(ticketDateString.split(separator: ":")[1])
+        let ticket = Ticket(project: project, ticket_num: number, shortDescription: summary)
+        return ticket
     }
 }
