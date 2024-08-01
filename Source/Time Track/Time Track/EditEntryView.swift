@@ -90,8 +90,22 @@ struct EditEntryView: View {
                 }
                                 
                 Section(header: Text("Time")){
-                    DatePicker("Start", selection: $start)
-                    DatePicker("End", selection: $end)
+                    HStack{
+                        Text("Start")
+                        Button("Now") {
+                            self.start = Date()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        DatePicker("", selection: $start)
+                    }
+                    HStack{
+                        Text("End")
+                        Button("Now") {
+                            self.end = Date()
+                        }
+                        .frame(maxWidth: .infinity, alignment: .trailing)
+                        DatePicker("", selection: $end)
+                    }
                 }
                 
                 Section(header: Text("Comment")){

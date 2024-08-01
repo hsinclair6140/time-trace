@@ -25,7 +25,7 @@ struct WorklogEntryView: View {
             }
             .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
-                Text(entry.getComment())  
+                Text(entry.getComment())
                     .italic()
             }
             .frame(maxWidth: .infinity, alignment: .leading)
