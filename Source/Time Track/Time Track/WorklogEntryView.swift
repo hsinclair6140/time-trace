@@ -18,20 +18,28 @@ struct WorklogEntryView: View {
     var body: some View {
         VStack{
             HStack{
-                Text(entry.getProject() + "-" + String(entry.getTicket()))
+                Text(entry.getProject() + "-" + String(entry.getTicket()) + ": ")
+                    .foregroundStyle(.blue)
+                Text(entry.getShortDescription())
+                    .foregroundStyle(.green)
             }
+            .frame(maxWidth: .infinity, alignment: .leading)
             HStack{
-                Text("Start Time: ")
+                Text(entry.getComment())  
+                    .italic()
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            HStack{
                 Text(DateTimeUtility.getTimeStringFromDate(date: entry.getStart()))
-            }
-            HStack{
-                Text("End Time: ")
+                    .foregroundStyle(.orange)
+                Text(" - ")
+                    .foregroundStyle(.orange)
                 Text(DateTimeUtility.getTimeStringFromDate(date: entry.getEnd()))
+                    .foregroundStyle(.orange)
+                Text("(" + String(entry.getDuration()) + ")")
+                    .foregroundStyle(.orange)
             }
-            HStack{
-                Text("Duration: ")
-                Text(String(entry.getDuration()))
-            }
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
     }
