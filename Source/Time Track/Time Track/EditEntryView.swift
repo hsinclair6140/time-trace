@@ -25,7 +25,7 @@ struct EditEntryView: View {
     init(date:Date) {
         start = DateTimeUtility.removeSeconds(date: date)
         end = DateTimeUtility.removeSeconds(date: date)
-        project = ""
+        project = fm.getFavoriteProject()
         ticketNum = ""
         comment = ""
         shortDescription = ""
@@ -127,7 +127,9 @@ struct EditEntryView: View {
     }
     
     private func deleteFavorite(){
-        fm.remove(fm.createTicketFromString(ticketDateString: favoritesSelection))
+        if (favoritesSelection != ""){
+            fm.remove(fm.createTicketFromString(ticketDateString: favoritesSelection))
+        }
     }
 }
 

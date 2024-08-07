@@ -61,10 +61,12 @@ class FavoritesManager {
     
     func updateTicketsList(){
         tickets.removeAll()
+        savedTicketData.sort()
         for savedTicketDataString in savedTicketData{
             let ticket = createTicketFromString(ticketDateString: savedTicketDataString)
             tickets.append(ticket)
         }
+        
     }
 
     private func save() {
