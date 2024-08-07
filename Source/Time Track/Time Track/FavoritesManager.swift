@@ -87,10 +87,16 @@ class FavoritesManager {
     }
     
     func createTicketFromString(ticketDateString:String) -> Ticket{
-        let id = String(ticketDateString.split(separator: ":")[0])
-        let project = String(id.split(separator: "-")[0])
-        let number = Int(id.split(separator: "-")[1]) ?? 0
-        let summary = String(ticketDateString.split(separator: ":")[1])
+        var id = ""
+        var project = ""
+        var number = 0
+        var summary = ""
+        id = String(ticketDateString.split(separator: ":")[0])
+        project = String(id.split(separator: "-")[0])
+        number = Int(id.split(separator: "-")[1]) ?? 0
+        if (ticketDateString.split(separator: ":").count > 1){
+            summary = String(ticketDateString.split(separator: ":")[1])
+        }
         let ticket = Ticket(project: project, ticket_num: number, shortDescription: summary)
         return ticket
     }
