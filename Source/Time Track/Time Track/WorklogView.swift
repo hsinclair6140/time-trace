@@ -15,7 +15,6 @@ struct WorklogView: View {
     @State private var totalHours = 0.0
     private let secondsInDay = 86400.0
     @State private var entriesForDay: [Entry] = []
-    @StateObject var csv = WorklogCSV()
     
     var body: some View {
         
@@ -25,8 +24,7 @@ struct WorklogView: View {
                      selection: $date,
                      displayedComponents: [.date]
             ).onChange(of: date, {
-                updateList()
-                csv.clear()})
+                updateList()})
             
             Gauge(value: totalHours/8.0) {
                 Text(String(format: "Hours: %f", totalHours))
@@ -36,21 +34,18 @@ struct WorklogView: View {
                     NavigationLink(destination: EditEntryView(entryIn:entry)) {
                         WorklogEntryView(entryIn: entry)
                     }
-                    .onAppear(perform: {
-                        csv.addEntry(entry: entry)})
                 }
                 .onDelete(perform: deleteItems)
             }
             .onAppear(perform: {
                 updateList()
-                csv.clear()
                 })
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     EditButton()
                 }
                 ToolbarItem {
-                    NavigationLink(destination: ExportView(csv: csv)) {
+                    NavigationLink(destination: ExportView(entries: entriesForDay)) {
                         Label("", systemImage: "square.and.arrow.up")
                     }
                 }

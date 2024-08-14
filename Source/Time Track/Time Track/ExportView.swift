@@ -9,13 +9,12 @@ import SwiftUI
 import MessageUI
 
 struct ExportView: View {
-    @ObservedObject var csv: WorklogCSV
+    var entries: [Entry]
     
     let defaults = UserDefaults.standard
     @State private var sendEmail = false
     @State private var emailAddress = ""
     
-        
     var body: some View {
         Form {
             TextField("Email Address", text: $emailAddress)
@@ -36,7 +35,7 @@ struct ExportView: View {
             }
             .sheet(isPresented: $sendEmail) {
                 MailView(
-                    content: csv.build(),
+                    content: WorklogCSV.buildCSVFromEntries(entries: entries),
                     to: emailAddress,
                     subject: "Timecard Entries")
             }
@@ -48,5 +47,5 @@ struct ExportView: View {
 }
 
 #Preview {
-    ExportView(csv: WorklogCSV())
+    ExportView(entries: [])
 }

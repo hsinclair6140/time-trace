@@ -7,27 +7,10 @@
 
 import Foundation
 
-@Observable
 class WorklogCSV : ObservableObject{
-    
-    private let header = "Project,Ticket,StartDate,StartTime,Duration,Comment\n"
-    private var entries: [Entry] = []
-    private var csv: String
-    
-    init() {
-        csv = header
-    }
-    
-    func addEntry(entry: Entry){
-        entries.append(entry)
-    }
-    
-    func clear(){
-        csv = header
-        entries.removeAll()
-    }
-    
-    func build() -> String{
+        
+    static func buildCSVFromEntries(entries: [Entry]) -> String{
+        var csv = "Project,Ticket,StartDate,StartTime,Duration,Comment\n"
         for entry in entries{
             csv.append("\(entry.getProject()),\(entry.getTicket()),\(entry.getStart().formatted()),\(entry.getDuration()),\(entry.getComment())\n")
         }
