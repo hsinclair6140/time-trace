@@ -31,6 +31,17 @@ class EntriesUtility{
         return entriesForDay
     }
     
+    static func getIndex(entries:[Entry], entryToFind:Entry) -> Int{
+        var i = 0
+        for entry in entries{
+            if entry.getStart() == entryToFind.getStart(){
+                return i
+            }
+            i+=1
+        }
+        return -1
+    }
+    
     func getTotalHoursForDay() -> Double{
         return self.totalHoursForDay
     }

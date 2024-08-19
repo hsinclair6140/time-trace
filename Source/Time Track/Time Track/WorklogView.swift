@@ -71,7 +71,8 @@ struct WorklogView: View {
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             for index in offsets {
-                modelContext.delete(entries[index])
+                modelContext.delete(entries[EntriesUtility.getIndex(entries:entries, entryToFind: entriesForDay[index])])
+                do {try modelContext.save()} catch {}
             }
         }
         updateList()
